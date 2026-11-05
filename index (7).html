@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRYSTAL CLEAR — прозрачная мебель для офиса</title>
+<style>
+  :root {
+    --white: #ffffff;
+    --light-gray: #f2f3f5;
+    --gray: #6b7280;
+    --dark: #1f2430;
+    --accent: #e63946; /* акцентный красный */
+    --accent-dark: #c92f3c;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    color: var(--dark);
+    background: var(--white);
+    line-height: 1.6;
+  }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+
+  /* ===== Шапка ===== */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+  .logo { font-weight: 700; font-size: 20px; letter-spacing: 1px; }
+  .logo span { color: var(--accent); }
+  .phone { font-weight: 600; color: var(--dark); text-decoration: none; }
+  .phone:hover { color: var(--accent); }
+
+  /* ===== Первый экран с фоновым изображением ===== */
+  .hero {
+    position: relative;
+    padding: 90px 0 100px;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.postimg.cc/52gK567w/IMG-2112.png') center/cover no-repeat;
+    overflow: hidden;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 640px; }
+  .badge {
+    display: inline-block; background: var(--accent); color: #fff;
+    padding: 6px 14px; border-radius: 100px; font-size: 13px;
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 22px;
+  }
+  .hero h1 { font-size: 44px; line-height: 1.15; margin-bottom: 20px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+  .hero h1 span { color: #ffb3b8; }
+  .hero p.sub { font-size: 18px; color: #f0f0f0; margin-bottom: 32px; max-width: 540px; text-shadow: 0 1px 5px rgba(0,0,0,0.3); }
+  .btn {
+    display: inline-block; background: var(--accent); color: #fff;
+    padding: 16px 34px; border: none; border-radius: 10px;
+    font-size: 16px; font-weight: 600; cursor: pointer;
+    text-decoration: none; transition: 0.25s;
+    box-shadow: 0 10px 25px rgba(230,57,70,0.3);
+  }
+  .btn:hover { background: var(--accent-dark); transform: translateY(-2px); }
+  .btn.ghost {
+    background: transparent; color: #fff;
+    border: 2px solid rgba(255,255,255,0.7); box-shadow: none;
+    margin-left: 14px;
+  }
+  .btn.ghost:hover { border-color: #fff; color: var(--dark); background: #fff; }
+
+  /* ===== Заголовки секций ===== */
+  section { padding: 80px 0; }
+  .section-title { text-align: center; margin-bottom: 50px; }
+  .section-title h2 { font-size: 32px; margin-bottom: 12px; }
+  .section-title p { color: var(--gray); font-size: 17px; max-width: 620px; margin: 0 auto; }
+
+  /* ===== Преимущества ===== */
+  .features { background: var(--light-gray); }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+  .feature {
+    background: #fff; padding: 30px 24px; border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    transition: 0.25s; border-top: 4px solid transparent;
+  }
+  .feature:hover { transform: translateY(-6px); border-top-color: var(--accent); }
+  .feature .icon {
+    width: 48px; height: 48px; border-radius: 12px; margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: center;
+    background: #fde8ea; color: var(--accent);
+  }
+  .feature h3 { font-size: 18px; margin-bottom: 10px; }
+  .feature p { color: var(--gray); font-size: 15px; }
+
+  /* ===== Для кого ===== */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .audience-card {
+    position: relative; border-radius: 16px; padding: 60px 28px 32px;
+    background: linear-gradient(180deg, #eef1f5, #ffffff);
+    border: 1px solid #e2e6ec; overflow: hidden;
+  }
+  .audience-card::before {
+    content: ""; position: absolute; top: 22px; left: 28px;
+    width: 34px; height: 34px; border-radius: 8px;
+    background: var(--accent); opacity: 0.9;
+  }
+  .audience-card h3 { font-size: 20px; margin-bottom: 10px; }
+  .audience-card p { color: var(--gray); font-size: 15px; }
+
+  /* ===== Оффер ===== */
+  .offer {
+    background: linear-gradient(120deg, #1f2430 0%, #2b3242 100%);
+    color: #fff; border-radius: 24px; padding: 60px 50px;
+    display: flex; justify-content: space-between; align-items: center; gap: 40px;
+    flex-wrap: wrap;
+  }
+  .offer h2 { font-size: 30px; margin-bottom: 14px; }
+  .offer h2 span { color: var(--accent); }
+  .offer p { color: #c8cdd6; font-size: 17px; max-width: 520px; }
+  .offer .btn { box-shadow: none; }
+
+  /* ===== Форма ===== */
+  .form-section { background: var(--light-gray); }
+  .form-wrap {
+    max-width: 720px; margin: 0 auto; background: #fff;
+    border-radius: 20px; padding: 48px 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+  }
+  .form-wrap h2 { text-align: center; margin-bottom: 8px; font-size: 28px; }
+  .form-wrap > p { text-align: center; color: var(--gray); margin-bottom: 32px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 16px; }
+  label { display: block; font-size: 14px; margin-bottom: 6px; color: var(--gray); font-weight: 600; }
+  input, textarea {
+    width: 100%; padding: 14px 16px; border: 1.5px solid #dde1e8;
+    border-radius: 10px; font-size: 15px; font-family: inherit;
+    transition: 0.2s; background: #fbfcfd;
+  }
+  input:focus, textarea:focus { outline: none; border-color: var(--accent); background: #fff; }
+  textarea { resize: vertical; min-height: 100px; }
+  .form-wrap .btn { width: 100%; margin-top: 8px; }
+  .form-note { text-align: center; font-size: 13px; color: var(--gray); margin-top: 14px; }
+  .form-success {
+    display: none; text-align: center; padding: 30px; color: #1a7f37;
+    background: #e9f7ee; border-radius: 12px; font-weight: 600; margin-top: 20px;
+  }
+
+  /* ===== Подвал ===== */
+  footer { background: var(--dark); color: #aab1bd; padding: 50px 0 30px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 34px; }
+  footer h4 { color: #fff; margin-bottom: 14px; font-size: 16px; }
+  footer a { color: #aab1bd; text-decoration: none; display: block; margin-bottom: 8px; font-size: 15px; }
+  footer a:hover { color: var(--accent); }
+  footer p { font-size: 15px; }
+  .copyright { border-top: 1px solid #343b4a; padding-top: 22px; text-align: center; font-size: 13px; }
+
+  /* ===== Адаптивность ===== */
+  @media (max-width: 900px) {
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+  }
+  @media (max-width: 600px) {
+    .grid-4 { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero { padding: 60px 0; }
+    .hero h1 { font-size: 28px; }
+    .btn.ghost { margin-left: 0; margin-top: 12px; }
+    .offer { padding: 40px 26px; }
+    .form-wrap { padding: 32px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Шапка ===== -->
+<header>
+  <div class="container nav">
+    <div class="logo">CRYSTAL <span>CLEAR</span></div>
+    <a href="tel:88002000105" class="phone">8-800-200-01-05</a>
+  </div>
+</header>
+
+<!-- ===== Первый экран ===== -->
+<section class="hero">
+  <div class="container hero-content">
+    <span class="badge">Новая коллекция 2026</span>
+    <h1>Прозрачная мебель <span>CRYSTAL CLEAR</span> — изящество и статус вашего офиса</h1>
+    <p class="sub">Премиальная мебель из акрила для офисов, конференц-залов и зон ожидания. Увеличенная прочность, эргономика и безупречный дизайн.</p>
+    <a href="#lead" class="btn">Получить бесплатный расчет</a>
+    <a href="#features" class="btn ghost">Узнать больше</a>
+  </div>
+</section>
+
+<!-- ===== Преимущества ===== -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-title">
+      <h2>Почему выбирают CRYSTAL CLEAR</h2>
+      <p>Мы создаем мебель, которая объединяет прозрачную эстетику и надежность промышленного уровня.</p>
+    </div>
+    <div class="grid-4">
+      <div class="feature">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Прозрачное изящество</h3>
+        <p>Визуально расширяет пространство и придает интерьеру премиальный характер.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Повышенная прочность</h3>
+        <p>Увеличенная толщина изделий и устойчивость к истиранию и механическим повреждениям.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Эргономика</h3>
+        <p>Спроектировано для комфорта ваших сотрудников, партнеров и гостей.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h3>Свое производство</h3>
+        <p>Полный цикл в Московской области — контроль качества на каждом этапе.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Для кого ===== -->
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>Для кого создана коллекция</h2>
+      <p>Решения для пространств, где ценят стиль, свет и продуманный комфорт.</p>
+    </div>
+    <div class="grid-3">
+      <div class="audience-card">
+        <h3>Офисы и штаб-квартиры</h3>
+        <p>Престижные рабочие места и зоны ресепшн, формирующие первое впечатление о компании.</p>
+      </div>
+      <div class="audience-card">
+        <h3>Конференц-залы</h3>
+        <p>Прозрачные столы и переговорные группы, создающие ощущение простора и открытости.</p>
+      </div>
+      <div class="audience-card">
+        <h3>Зоны ожидания</h3>
+        <p>Лаконичные диваны и столики, которые делают ожидание комфортным и эстетичным.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Оффер ===== -->
+<section>
+  <div class="container">
+    <div class="offer">
+      <div>
+        <h2>Специальное предложение <span>−10%</span></h2>
+        <p>При заказе мебели из коллекции CRYSTAL CLEAR — бесплатный расчет и планировка, а также скидка до 10% на стоимость заказа.</p>
+      </div>
+      <a href="#lead" class="btn">Заказать расчет</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Форма ===== -->
+<section class="form-section" id="lead">
+  <div class="container">
+    <div class="form-wrap">
+      <h2>Получите бесплатный расчет</h2>
+      <p>Оставьте заявку — менеджер Алина Егорова свяжется с вами в течение рабочего дня.</p>
+
+      <form id="leadForm" onsubmit="return handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Ваше имя *</label>
+            <input type="text" id="name" name="name" required placeholder="Иван Петров">
+          </div>
+          <div class="form-group">
+            <label for="phone">Телефон *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="+7 (___) ___-__-__">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@company.ru">
+          </div>
+          <div class="form-group">
+            <label for="company">Компания</label>
+            <input type="text" id="company" name="company" placeholder="ООО «Ромашка»">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="comment">Комментарий</label>
+          <textarea id="comment" name="comment" placeholder="Опишите задачу: тип помещения, площадь, пожелания..."></textarea>
+        </div>
+        <button type="submit" class="btn">Отправить заявку</button>
+        <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+        <div class="form-success" id="success">Спасибо! Заявка отправлена. Мы свяжемся с вами в ближайшее время.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Подвал ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>CRYSTAL CLEAR</h4>
+        <p>Прозрачное изящество и красота вашего офиса. Производство мебели из акрила и полимерного пластика.</p>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <a href="tel:88002000105">8-800-200-01-05</a>
+        <p>Менеджер: Алина Егорова</p>
+      </div>
+      <div>
+        <h4>Производство</h4>
+        <p>Московская область,<br>г. Лыткарино, ул. Луговая, стр. 1</p>
+      </div>
+    </div>
+    <div class="copyright">© 2026 CRYSTAL CLEAR. Все права защищены.</div>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    var form = document.getElementById('leadForm');
+    var success = document.getElementById('success');
+    // Здесь можно добавить отправку на сервер / в CRM
+    form.querySelector('button[type="submit"]').style.display = 'none';
+    success.style.display = 'block';
+    form.reset();
+    return false;
+  }
+
+  // Плавная прокрутка по якорным ссылкам
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
